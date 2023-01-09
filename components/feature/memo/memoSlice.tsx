@@ -25,10 +25,14 @@ export const memoSlice = createSlice({
             }
             state.memos.push(memo)
         },
-        delete: (state, action: PayloadAction<string>) => {
+        del: (state, action: PayloadAction<string>) => {
             state.memos = state.memos.filter(memo => !(memo.id == action.payload))
-        }
+        },
     }
 })
+
+export const { add, del } = memoSlice.actions
+export const selectMemos = (state: MemoState) => state.memos
+export const selectMemo = (state: MemoState) => {(id: string) => state.memos.filter(memo => memo.id == id)[0]}
 
 export default memoSlice.reducer

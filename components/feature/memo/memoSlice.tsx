@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid"
+import type { RootState } from "../../app/store"
 
-interface Memo {
+export interface Memo {
     text: string
     id: string
 }
 
-interface MemoState {
+export interface MemoState {
     memos: Memo[]
 }
 
@@ -18,6 +19,13 @@ export const memoSlice = createSlice({
     name: "memo",
     initialState,
     reducers: {
+        one: (state) => {
+            let memo: Memo = {
+                id: uuidv4(),
+                text: "one",
+            }
+            state.memos.push(memo)
+        },
         add: (state, action: PayloadAction<string>) => {
             let memo: Memo = {
                 id: uuidv4(),
@@ -31,8 +39,8 @@ export const memoSlice = createSlice({
     }
 })
 
-export const { add, del } = memoSlice.actions
-export const selectMemos = (state: MemoState) => state.memos
-export const selectMemo = (state: MemoState) => {(id: string) => state.memos.filter(memo => memo.id == id)[0]}
+export const { one, add, del } = memoSlice.actions
+export const selectMemos = (state: RootState) => state.memos.memos
+export const selectMemo = (state: RootState) => {(id: string) => state.memos.memos.filter(memo => memo.id == id)[0]}
 
 export default memoSlice.reducer

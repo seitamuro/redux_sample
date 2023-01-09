@@ -5,14 +5,14 @@ import {
     del,
  } from "./memoSlice"
 import { useDispatch, useSelector } from "react-redux"
+import type { Memo } from "./memoSlice" 
 
 export function useMemos() {
-    const memos = useSelector(selectMemos)
-    const getMemo = useSelector(selectMemo)
+    const memos: Memo[] = useSelector(selectMemos)
     const dispatch = useDispatch()
 
-    const addMemo = (text: string) => dispatch(add(text));
-    const delMemo = (id: string) => dispatch(del(id))
+    const addMemo = (text: string): Object => dispatch(add(text));
+    const delMemo = (id: string): Object => dispatch(del(id))
 
-    return [memos, getMemo, addMemo, delMemo]
+    return [memos, addMemo, delMemo] as const
 }

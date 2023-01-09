@@ -14,6 +14,9 @@ export default function Home() {
       <div>
         <Link href="/anotherpage">go to <code>/anotherpage</code></Link>
       </div>
+      <div>
+        <Link href="/customhook">go to <code>/customhook</code></Link>
+      </div>
     </>
   )
 }

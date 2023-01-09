@@ -7,18 +7,6 @@ import {
 export default function Customhook(): JSX.Element {
     const [memos, addMemo, delMemo] = useMemos()
 
-    useEffect(() => {
-        addMemo("test")
-        console.log("%o", memos)
-    }, [])
-
-    useEffect(() => {
-        console.log("%o", memos)
-        console.log(`${memos.length}`)
-        console.log(typeof memos)
-    }, [memos])
-
-
     return (
         <>
             {memos.map((memo, i) => (<div key={i}>{memo.text}</div>))}

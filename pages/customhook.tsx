@@ -17,7 +17,7 @@ export default function Customhook(): JSX.Element {
             </div>
             <div>
                 <b>2つめのカスタムホックの内容</b>
-                {memos1.map((memo) => (<div key={memo.id}>{memo.text}</div>))}
+                {memos2.map((memo) => (<div key={memo.id}>{memo.text}</div>))}
                 <button onClick={() => addMemo2("CustomHook2")}>CustomHook2</button>
             </div>
         </>

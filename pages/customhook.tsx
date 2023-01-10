@@ -5,13 +5,21 @@ import {
 } from "react"
 
 export default function Customhook(): JSX.Element {
-    const [memos, addMemo, delMemo] = useMemos()
+    const [memos1, addMemo1, delMemo1] = useMemos()
+    const [memos2, addMemo2, delMemo2] = useMemos()
 
     return (
         <>
-            {memos.map((memo, i) => (<div key={i}>{memo.text}</div>))}
-            <button onClick={() => addMemo("Pushed1!")}>Push1!</button>
-            <button onClick={() => addMemo("Pushed2!")}>Push2!</button>
+            <div>
+                <b>1つめのカスタムホックの内容</b>
+                {memos1.map((memo) => (<div key={memo.id}>{memo.text}</div>))}
+                <button onClick={() => addMemo1("CustomHook1")}>CustomHook1</button>
+            </div>
+            <div>
+                <b>2つめのカスタムホックの内容</b>
+                {memos1.map((memo) => (<div key={memo.id}>{memo.text}</div>))}
+                <button onClick={() => addMemo2("CustomHook2")}>CustomHook2</button>
+            </div>
         </>
     )
 }
